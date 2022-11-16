@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="text-align:center;background-color:hotpink;">
+    <h1 style="font-family: Serif;padding: 20px; font-weight:bold;">Contact Details</h1>
+    <div style="font-family:Serif;font-weight:bold">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Submit">
+    </div>
+    </form>
+</body>
+</html>
+
+{% endblock %}

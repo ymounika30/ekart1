@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block title %}
+mycart
+{% endblock %}
+{% block title_content %}
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        padding:10px;
+      }
+      
+      td, th {
+        border: 1px solid black;
+        text-align: center;
+        padding: 8px;
+        
+      }
+      
+      tr:nth-child(even) {
+        background-color: white;
+      }
+      th{
+          background-color: black;
+          color: white;
+      }
+      body{
+        background-color: cyan;
+      }
+</style>
+    {% endblock %}
+{% block content %}
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 style="font-family:Serif;font-weight:bold;text-align:center;padding:50px;font-size:75px">Cart Items</h3>
+            <table>
+                <thead>
+                <tr>
+                <th>sno</th>
+                <th>product</th>
+                <th>rate</th>
+                <th>quantity</th>
+                <th>subtotal</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for cp in cart.cartproduct_set.all %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{cp.product.title}}</td>
+                    <td>{{cp.rate}}</td>
+                    <td>{{cp.quantity}}</td>
+                    <td>{{cp.subtotal}}</td>            
+                </tr>
+                {% endfor %}
+
+            </tbody>
+            </table><br><br>
+            <table>
+            
+            <tbody>
+                <tr>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>{{cart.total}}</td>
+                </tr>
+            </tbody>
+            </table>    
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}
